@@ -1,4 +1,4 @@
-from functions import pay_calculator, monday
+from pay_functions import pay_calculator
 
 
 print("Welcome to the Weekly Pay Calculator app!")
