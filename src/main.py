@@ -1,12 +1,12 @@
 from pay_functions import pay_calculator
+from colored import fg, bg, attr
 
-
-print("Welcome to the Weekly Pay Calculator app!")
+print(f"{fg('yellow')} Welcome to the Weekly Pay Calculator app! {attr('reset')}")
 
 def start_menu():
-    print("1. To calculate a new pay week please enter 1")
-    print("2. To view your pay history please enter 2")
-    print("5. To exit please enter 3")
+    print(f"1. To calculate a new pay week {fg('yellow')} please enter 1 {attr('reset')}")
+    print(f"2. To view your pay history {fg('yellow')} please enter 2 {attr('reset')}")
+    print(f"3. To exit {fg('yellow')} please enter 3 {attr('reset')}")
     selection = input("Please enter your selection:  ")
     return selection
 
@@ -31,12 +31,12 @@ while user_selection != "3":
         # remove_todo(file_name)
         print("2")
     elif (user_selection == "3"):
-        print("You are now exiting")
+        print(f"You are now {fg('yellow')}exiting{attr('reset')}")
         continue
     else:
-        print("Please enter a number")
+        print(f"{fg('yellow')} Please enter a number {attr('reset')}")
 
-    input("Press enter to continue.....")
+    input(f"{fg('yellow')}Press enter {attr('reset')} to continue.....")
 
 
 
