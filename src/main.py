@@ -1,5 +1,20 @@
 from pay_functions import pay_calculator
-from colored import fg, bg, attr
+from colored import fg, attr
+import csv
+
+
+file_name = "pay_history.csv"
+
+try:
+    pay_file = open(file_name, "r")
+    pay_file.close()
+
+except FileNotFoundError:
+    pay_file = open(file_name, "w")
+    pay_file.write("pay_day,pay_amount\n")
+    pay_file.close()
+
+
 
 print(f"{fg('yellow')} Welcome to the Weekly Pay Calculator app! {attr('reset')}")
 
@@ -35,7 +50,7 @@ while user_selection != "3":
         continue
     else:
         print(f"{fg('yellow')} Please enter a number {attr('reset')}")
-
+        continue
     input(f"{fg('yellow')}Press enter {attr('reset')} to continue.....")
 
 
