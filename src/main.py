@@ -1,4 +1,4 @@
-from pay_functions import pay_calculator
+from pay_functions import pay_calculator, view_pay_history
 from colored import fg, attr
 import csv
 
@@ -40,11 +40,11 @@ user_selection = ""
 while user_selection != "3":
     user_selection = start_menu()
     if (user_selection == "1"):
-        pay_calculator()
-        # add_todo(file_name)
+        pay_calculator(file_name)
+        
     elif (user_selection == "2"):
-        # remove_todo(file_name)
-        print("2")
+        view_pay_history(file_name)
+
     elif (user_selection == "3"):
         print(f"You are now {fg('yellow')}exiting{attr('reset')}")
         continue

@@ -1,12 +1,18 @@
 
 from daily_functions import monday, tuesday, wednesday, thursday, friday, saturday, sunday, user_base_rate
 from colored import fg, attr
+from datetime import date
 import csv
 
-def pay_calculator():
-    file_name = "pay_history.csv"
+
+file_name = "pay_history.csv"
+
+
+def pay_calculator(file_name):
+    
     weekly_accumulated = 0
     pay_day = ""
+    pay_week(file_name)
     base_rate = user_base_rate()
 
     while pay_day != "finished" or "Finished":
@@ -62,5 +68,23 @@ def pay_calculator():
             print(f"{fg('yellow')}Please enter one of the days of the week or finished{attr('reset')}")
     
     print(f"Your {fg('yellow')}weekly pay{attr('reset')} is: $",format(weekly_accumulated,".2f"))
+    with open(file_name, "a")as pay_file:
+            writer = csv.writer(pay_file)
+            writer.writerow(["Weekly Total: ", format(weekly_accumulated,".2f")])
 
+def view_pay_history(file_name):
+    print(f"{fg('yellow')}Viewing pay history{attr('reset')}")
+    with open(file_name, "r") as pay_file:
+        reader = csv.reader(pay_file)
+        for row in reader:
+            print(row)
 
+def pay_week(file_name):
+    date_inputs = input(f"Please enter starting date of pay week in the format, {fg('yellow')}YYYY-MM-DDDD{attr('reset')}:  ").split('-')
+    year, month, day = [int(i) for i in date_inputs]
+    week_of_pay = date(year, month, day)
+    with open(file_name, "a")as pay_file:
+            writer = csv.writer(pay_file)
+            writer.writerow(["Pay week: ", week_of_pay])
+
+    
