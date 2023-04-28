@@ -17,7 +17,7 @@ def pay_calculator(file_name):
 
     while pay_day != "finished" or "Finished":
         
-        pay_day = input(f"Please enter a {fg('yellow')}day{attr('reset')} you've worked, or {fg('yellow')}'finished'{attr('reset')} when your pay weeks complete  : ")
+        pay_day = input(f"Please enter a {fg('yellow')}day{attr('reset')} you've worked, or {fg('yellow')}'finished'{attr('reset')} when your pay weeks complete : ")
 
         # Monday
         if pay_day in ["monday", "Monday", "mon", "Mon"]:
@@ -65,7 +65,7 @@ def pay_calculator(file_name):
         elif pay_day in ["Finished", "finished", "exit", "Exit", "quit", "Quit"]:
             break
         else:
-            print(f"{fg('yellow')}Please enter one of the days of the week or finished{attr('reset')}")
+            print(f"{fg('red')}Please enter one of the days of the week or finished{attr('reset')}")
     
     print(f"Your {fg('yellow')}weekly pay{attr('reset')} is: $",format(weekly_accumulated,".2f"))
     with open(file_name, "a")as pay_file:
@@ -86,5 +86,7 @@ def pay_week(file_name):
     with open(file_name, "a")as pay_file:
             writer = csv.writer(pay_file)
             writer.writerow(["Pay week: ", week_of_pay])
+
+
 
     

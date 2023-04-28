@@ -4,7 +4,17 @@ import csv
 
 def user_base_rate():
     global base_rate
-    base_rate = float(input(f"Please enter your {fg('yellow')}base rate{attr('reset')} of pay  : "))
+    base_rate = ''
+    while True:
+        input_rate = (input(f"Please enter your {fg('yellow')}base rate{attr('reset')} of pay : "))
+        try:
+            base_rate = float(input_rate)
+            if base_rate <= 0:
+                raise ValueError
+            break
+        except ValueError:
+            print(f"{fg('red')} '{input_rate}' is not a valid base rate of pay, please re-enter{attr('reset')}")
+
     return base_rate;
 
 
