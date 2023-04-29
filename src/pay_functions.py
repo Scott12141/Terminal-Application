@@ -1,7 +1,7 @@
 
 from daily_functions import monday, tuesday, wednesday, thursday, friday, saturday, sunday, user_base_rate
 from colored import fg, attr
-from datetime import date
+from datetime import date, datetime
 import csv
 
 
@@ -80,12 +80,18 @@ def view_pay_history(file_name):
             print(row)
 
 def pay_week(file_name):
-    date_inputs = input(f"Please enter starting date of pay week in the format, {fg('yellow')}YYYY-MM-DDDD{attr('reset')}:  ").split('-')
-    year, month, day = [int(i) for i in date_inputs]
-    week_of_pay = date(year, month, day)
-    with open(file_name, "a")as pay_file:
-            writer = csv.writer(pay_file)
-            writer.writerow(["Pay week: ", week_of_pay])
+    date_inputs = ''
+    while True:
+        date_inputs = input(f"Please enter starting date of pay week in the format, {fg('yellow')}DD-MM-YYYY{attr('reset')} :")
+        try:
+            date_outputs = datetime.strptime(date_inputs, "%d-%m-%Y").date()
+            with open(file_name, "a")as pay_file:
+                writer = csv.writer(pay_file)
+                writer.writerow(["Pay week: ", date_outputs])
+            break
+        except ValueError:
+            print(f"{fg('red')}That is not a valid date.{attr('reset')}")
+
 
 
 

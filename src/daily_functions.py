@@ -2,6 +2,7 @@
 from colored import fg, attr
 import csv
 
+
 def user_base_rate():
     global base_rate
     base_rate = ''
@@ -18,10 +19,26 @@ def user_base_rate():
     return base_rate;
 
 
+def user_hours_worked():
+    global hours_worked
+    hours_worked = ''
+    while True:
+        input_hours = (input(f"Please enter {fg('yellow')}hours worked{attr('reset')} : "))
+        try:
+            hours_worked = float(input_hours)
+            if hours_worked < 4:
+                raise ValueError
+            break
+        except ValueError:
+            print(f"{fg('red')} '{input_hours}' is not a valid amount of hours worked, please re-enter{attr('reset')}")
+
+    return hours_worked;
+
+
 # MONDAY
 def monday(file_name):
     shift_worked = input(f"What {fg('yellow')}shift{attr('reset')} did you work on Monday? Please enter 'Day', 'Afternoon' or 'Night'.  ")
-    hours_worked = float(input(f"Please enter {fg('yellow')}hours worked{attr('reset')} on Monday  : "))
+    user_hours_worked()
     public_holiday = input(f"Was Monday a {fg('yellow')}public holiday?{attr('reset')}  y/n.  ")
 
     if public_holiday in ["y", "Y", "yes", "Yes"]:
@@ -60,7 +77,7 @@ def monday(file_name):
 # TUESDAY
 def tuesday(file_name):
     shift_worked = input(f"What {fg('yellow')}shift{attr('reset')} did you work on Tuesday? Please enter 'Day', 'Afternoon' or 'Night'.  ")
-    hours_worked = float(input(f"Please enter {fg('yellow')}hours worked{attr('reset')} on Tuesday  : "))
+    user_hours_worked()
     public_holiday = input(f"Was Tuesday a {fg('yellow')}public holiday?{attr('reset')} y/n.  ")
 
     if public_holiday in ["y", "Y", "yes", "Yes"]:
@@ -99,7 +116,7 @@ def tuesday(file_name):
 # WEDNESDAY
 def wednesday(file_name):
     shift_worked = input(f"What {fg('yellow')}shift{attr('reset')} did you work on Wednesday? Please enter 'Day', 'Afternoon' or 'Night'.  ")
-    hours_worked = float(input(f"Please enter {fg('yellow')}hours worked{attr('reset')} on Wednesday  : "))
+    user_hours_worked()
     public_holiday = input(f"Was Wednesday a {fg('yellow')}public holiday?{attr('reset')} y/n.  ")
 
     if public_holiday in ["y", "Y", "yes", "Yes"]:
@@ -138,7 +155,7 @@ def wednesday(file_name):
 # THURSDAY
 def thursday(file_name):
     shift_worked = input(f"What {fg('yellow')}shift{attr('reset')} did you work on Thursday? Please enter 'Day', 'Afternoon' or 'Night'.  ")
-    hours_worked = float(input(f"Please enter {fg('yellow')}hours worked{attr('reset')} on Thursday  : "))
+    user_hours_worked()
     public_holiday = input(f"Was Thursday a {fg('yellow')}public holiday?{attr('reset')} y/n.  ")
 
     if public_holiday in ["y", "Y", "yes", "Yes"]:
@@ -177,7 +194,7 @@ def thursday(file_name):
 # FRIDAY
 def friday(file_name):
     shift_worked = input(f"What {fg('yellow')}shift{attr('reset')} did you work on Friday? Please enter 'Day', 'Afternoon' or 'Night'.  ")
-    hours_worked = float(input(f"Please enter {fg('yellow')}hours worked{attr('reset')} on Friday  : "))
+    user_hours_worked()
     public_holiday = input(f"Was Friday a {fg('yellow')}public holiday?{attr('reset')} y/n.  ")
 
     if public_holiday in ["y", "Y", "yes", "Yes"]:
@@ -216,7 +233,7 @@ def friday(file_name):
 # SATURDAY
 def saturday(file_name):
     shift_worked = input(f"What {fg('yellow')}shift{attr('reset')} did you work on Saturday? Please enter 'Day', 'Afternoon' or 'Night'.  ")
-    hours_worked = float(input(f"Please enter {fg('yellow')}hours worked{attr('reset')} on Saturday  : "))
+    user_hours_worked()
     public_holiday = input(f"Was Saturday a {fg('yellow')}public holiday?{attr('reset')} y/n.  ")
 
     if public_holiday in ["y", "Y", "yes", "Yes"]:
@@ -255,7 +272,7 @@ def saturday(file_name):
 # SUNDAY
 def sunday(file_name):
     shift_worked = input(f"What {fg('yellow')}shift{attr('reset')} did you work on Sunday? Please enter 'Day', 'Afternoon' or 'Night'.  ")
-    hours_worked = float(input(f"Please enter {fg('yellow')}hours worked{attr('reset')} on Sunday  : "))
+    user_hours_worked()
     public_holiday = input(f"Was Sunday a {fg('yellow')}public holiday?{attr('reset')} y/n.  ")
 
     if public_holiday in ["y", "Y", "yes", "Yes"]:

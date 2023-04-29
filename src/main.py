@@ -16,7 +16,7 @@ except FileNotFoundError:
 
 
 
-print(f"{fg('yellow')} Welcome to the Weekly Pay Calculator app! {attr('reset')}")
+print(f"{fg('yellow')}Welcome to the Weekly Pay Calculator app!{attr('reset')}")
 
 def start_menu():
     print(f"1. To calculate a new pay week {fg('yellow')} please enter 1 {attr('reset')}")
@@ -55,4 +55,4 @@ while user_selection != "3":
 
 
 
-print("Thank you for using the pay calculator")
+print(f"{fg('yellow')}Thank you for using the pay calculator!{attr('reset')}")
