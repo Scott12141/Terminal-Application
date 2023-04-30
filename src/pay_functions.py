@@ -82,7 +82,7 @@ def view_pay_history(file_name):
 def pay_week(file_name):
     date_inputs = ''
     while True:
-        date_inputs = input(f"Please enter starting date of pay week in the format, {fg('yellow')}DD-MM-YYYY{attr('reset')} :")
+        date_inputs = input(f"Please enter starting date of pay week in the format, {fg('yellow')}DD-MM-YYYY{attr('reset')} : ")
         try:
             date_outputs = datetime.strptime(date_inputs, "%d-%m-%Y").date()
             with open(file_name, "a")as pay_file:

@@ -46,10 +46,10 @@ while user_selection != "3":
         view_pay_history(file_name)
 
     elif (user_selection == "3"):
-        print(f"You are now {fg('yellow')}exiting{attr('reset')}")
+        print(f"You are now {fg('yellow')}exiting.{attr('reset')}")
         continue
     else:
-        print(f"{fg('red')} Please enter a number 1-3 {attr('reset')}")
+        print(f"{fg('red')} Please enter a number 1-3.{attr('reset')}")
         continue
     input(f"{fg('yellow')}Press enter {attr('reset')} to continue.....")
 

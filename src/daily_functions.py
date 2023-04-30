@@ -18,12 +18,11 @@ def user_base_rate():
 
     return base_rate;
 
-
-def user_hours_worked():
+def user_hours_worked(day_of_week):
     global hours_worked
     hours_worked = ''
     while True:
-        input_hours = (input(f"Please enter {fg('yellow')}hours worked{attr('reset')} : "))
+        input_hours = (input(f"Please enter {fg('yellow')}hours worked {attr('reset')}on {day_of_week} : "))
         try:
             hours_worked = float(input_hours)
             if hours_worked < 4:
@@ -34,12 +33,38 @@ def user_hours_worked():
 
     return hours_worked;
 
+def user_shift_worked(day_of_week):
+    global shift_worked
+    shift_worked = ''
+    while True:
+        input_shift = input(f"What {fg('yellow')}shift{attr('reset')} did you work on {day_of_week}? Please enter 'Day', 'Afternoon' or 'Night'.  ")
+        if input_shift in ["Day", "day", "afternoon", "Afternoon", "night", "Night"]:
+            shift_worked = input_shift
+            break   
+        else:
+            print(f"{fg('red')} '{input_shift}' is not a valid shift worked, please re-enter{attr('reset')}")
+
+    return shift_worked;
+
+def ph_penalties(day_of_week):
+    global public_holiday
+    public_holiday = ''
+    while True:
+        input_ph = input(f"Was {day_of_week} a {fg('yellow')}public holiday?{attr('reset')}  y/n.  ")
+        if input_ph in ["y", "Y", "yes", "Yes", "n", "N", "no", "No"]:
+            public_holiday = input_ph
+            break   
+        else:
+            print(f"{fg('red')} '{input_ph}' is not a valid responce, please enter y or n{attr('reset')}")
+
+    return public_holiday;
+
 
 # MONDAY
 def monday(file_name):
-    shift_worked = input(f"What {fg('yellow')}shift{attr('reset')} did you work on Monday? Please enter 'Day', 'Afternoon' or 'Night'.  ")
-    user_hours_worked()
-    public_holiday = input(f"Was Monday a {fg('yellow')}public holiday?{attr('reset')}  y/n.  ")
+    user_shift_worked("Monday")
+    user_hours_worked("Monday")
+    ph_penalties("Monday")
 
     if public_holiday in ["y", "Y", "yes", "Yes"]:
         monday_pay = (base_rate * 2.5) * hours_worked
@@ -72,13 +97,13 @@ def monday(file_name):
             writer = csv.writer(pay_file)
             writer.writerow(["Monday", format(monday_pay,".2f")])
             return monday_pay
-
+    
 
 # TUESDAY
 def tuesday(file_name):
-    shift_worked = input(f"What {fg('yellow')}shift{attr('reset')} did you work on Tuesday? Please enter 'Day', 'Afternoon' or 'Night'.  ")
-    user_hours_worked()
-    public_holiday = input(f"Was Tuesday a {fg('yellow')}public holiday?{attr('reset')} y/n.  ")
+    user_shift_worked("Tuesday")
+    user_hours_worked("Tuesday")
+    ph_penalties("Tuesday")
 
     if public_holiday in ["y", "Y", "yes", "Yes"]:
         tuesday_pay = (base_rate * 2.5) * hours_worked
@@ -115,9 +140,9 @@ def tuesday(file_name):
 
 # WEDNESDAY
 def wednesday(file_name):
-    shift_worked = input(f"What {fg('yellow')}shift{attr('reset')} did you work on Wednesday? Please enter 'Day', 'Afternoon' or 'Night'.  ")
-    user_hours_worked()
-    public_holiday = input(f"Was Wednesday a {fg('yellow')}public holiday?{attr('reset')} y/n.  ")
+    user_shift_worked("Wednesday")
+    user_hours_worked("Wednesday")
+    ph_penalties("Wednesday")
 
     if public_holiday in ["y", "Y", "yes", "Yes"]:
         wednesday_pay = (base_rate * 2.5) * hours_worked
@@ -150,13 +175,13 @@ def wednesday(file_name):
             writer = csv.writer(pay_file)
             writer.writerow(["Wednesday", format(wednesday_pay,".2f")])
             return wednesday_pay
-
+   
 
 # THURSDAY
 def thursday(file_name):
-    shift_worked = input(f"What {fg('yellow')}shift{attr('reset')} did you work on Thursday? Please enter 'Day', 'Afternoon' or 'Night'.  ")
-    user_hours_worked()
-    public_holiday = input(f"Was Thursday a {fg('yellow')}public holiday?{attr('reset')} y/n.  ")
+    user_shift_worked("Thursday")
+    user_hours_worked("Thursday")
+    ph_penalties("Thursday")
 
     if public_holiday in ["y", "Y", "yes", "Yes"]:
         thursday_pay = (base_rate * 2.5) * hours_worked
@@ -193,9 +218,9 @@ def thursday(file_name):
 
 # FRIDAY
 def friday(file_name):
-    shift_worked = input(f"What {fg('yellow')}shift{attr('reset')} did you work on Friday? Please enter 'Day', 'Afternoon' or 'Night'.  ")
-    user_hours_worked()
-    public_holiday = input(f"Was Friday a {fg('yellow')}public holiday?{attr('reset')} y/n.  ")
+    user_shift_worked("Friday")
+    user_hours_worked("Friday")
+    ph_penalties("Friday")
 
     if public_holiday in ["y", "Y", "yes", "Yes"]:
         friday_pay = (base_rate * 2.5) * hours_worked
@@ -228,13 +253,13 @@ def friday(file_name):
             writer = csv.writer(pay_file)
             writer.writerow(["Friday", format(friday_pay,".2f")])
             return friday_pay
-    
+   
 
 # SATURDAY
 def saturday(file_name):
-    shift_worked = input(f"What {fg('yellow')}shift{attr('reset')} did you work on Saturday? Please enter 'Day', 'Afternoon' or 'Night'.  ")
-    user_hours_worked()
-    public_holiday = input(f"Was Saturday a {fg('yellow')}public holiday?{attr('reset')} y/n.  ")
+    user_shift_worked("Saturday")
+    user_hours_worked("Saturday")
+    ph_penalties("Saturday")
 
     if public_holiday in ["y", "Y", "yes", "Yes"]:
         saturday_pay = (base_rate * 2.5) * hours_worked
@@ -271,9 +296,9 @@ def saturday(file_name):
 
 # SUNDAY
 def sunday(file_name):
-    shift_worked = input(f"What {fg('yellow')}shift{attr('reset')} did you work on Sunday? Please enter 'Day', 'Afternoon' or 'Night'.  ")
-    user_hours_worked()
-    public_holiday = input(f"Was Sunday a {fg('yellow')}public holiday?{attr('reset')} y/n.  ")
+    user_shift_worked("Sunday")
+    user_hours_worked("Sunday")
+    ph_penalties("Sunday")
 
     if public_holiday in ["y", "Y", "yes", "Yes"]:
         sunday_pay = (base_rate * 2.5) * hours_worked
@@ -306,4 +331,4 @@ def sunday(file_name):
             writer = csv.writer(pay_file)
             writer.writerow(["Sunday", format(sunday_pay,".2f")])
             return sunday_pay
-        
+    
