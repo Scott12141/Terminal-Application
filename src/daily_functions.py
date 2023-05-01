@@ -59,6 +59,29 @@ def ph_penalties(day_of_week):
 
     return public_holiday;
 
+def public_holiday_pay(base_rate, hours_worked):
+    ph_pay = (base_rate * 2.5) * hours_worked
+    return ph_pay
+
+def day_shift_pay(base_rate, hours_worked):
+    ds_pay = base_rate  * hours_worked
+    return ds_pay
+
+def arvo_shift_pay(base_rate, hours_worked):
+    as_pay = (base_rate * 1.15)  * hours_worked
+    return as_pay
+
+def night_shift_pay(base_rate, hours_worked):
+    ns_pay = (base_rate * 1.25)  * hours_worked
+    return ns_pay
+
+def sat_loading_pay(base_rate, hours_worked):
+    satl_pay = (base_rate * 1.5) * hours_worked
+    return satl_pay
+
+def sun_loading_pay(base_rate, hours_worked):
+    sunl_pay = (base_rate * 1.8) * hours_worked
+    return sunl_pay
 
 # MONDAY
 def monday(file_name):
@@ -67,7 +90,7 @@ def monday(file_name):
     ph_penalties("Monday")
 
     if public_holiday in ["y", "Y", "yes", "Yes"]:
-        monday_pay = (base_rate * 2.5) * hours_worked
+        monday_pay = public_holiday_pay(base_rate, hours_worked)
         print(f"{fg('yellow')}Monday's{attr('reset')} pay is: $",format(monday_pay,".2f"))
         with open(file_name, "a")as pay_file:
             writer = csv.writer(pay_file)
@@ -75,7 +98,7 @@ def monday(file_name):
             return monday_pay
              
     elif public_holiday in ["n", "N", "no", "No"] and shift_worked in ["day", "Day"]:
-        monday_pay = base_rate  * hours_worked
+        monday_pay = day_shift_pay(base_rate, hours_worked)
         print(f"{fg('yellow')}Monday's{attr('reset')} pay is: $",format(monday_pay,".2f"))
         with open(file_name, "a")as pay_file:
             writer = csv.writer(pay_file)
@@ -83,7 +106,7 @@ def monday(file_name):
             return monday_pay
         
     elif public_holiday in ["n", "N", "no", "No"] and shift_worked in ["afternoon", "Afternoon"]:
-        monday_pay = (base_rate * 1.15)  * hours_worked
+        monday_pay = arvo_shift_pay(base_rate, hours_worked)
         print(f"{fg('yellow')}Monday's{attr('reset')} pay is: $",format(monday_pay,".2f"))
         with open(file_name, "a")as pay_file:
             writer = csv.writer(pay_file)
@@ -91,7 +114,7 @@ def monday(file_name):
             return monday_pay
     
     elif public_holiday in ["n", "N", "no", "No"] and shift_worked in ["night", "Night"]:
-        monday_pay = (base_rate * 1.25)  * hours_worked
+        monday_pay = night_shift_pay(base_rate, hours_worked)
         print(f"{fg('yellow')}Monday's{attr('reset')} pay is: $",format(monday_pay,".2f"))
         with open(file_name, "a")as pay_file:
             writer = csv.writer(pay_file)
@@ -106,7 +129,7 @@ def tuesday(file_name):
     ph_penalties("Tuesday")
 
     if public_holiday in ["y", "Y", "yes", "Yes"]:
-        tuesday_pay = (base_rate * 2.5) * hours_worked
+        tuesday_pay = public_holiday_pay(base_rate, hours_worked)
         print(f"{fg('yellow')}Tuesday's{attr('reset')} pay is: $",format(tuesday_pay,".2f"))
         with open(file_name, "a")as pay_file:
             writer = csv.writer(pay_file)
@@ -114,7 +137,7 @@ def tuesday(file_name):
             return tuesday_pay
         
     elif public_holiday in ["n", "N", "no" "No"] and shift_worked in ["day", "Day"]:
-        tuesday_pay = base_rate  * hours_worked
+        tuesday_pay = day_shift_pay(base_rate, hours_worked)
         print(f"{fg('yellow')}Tuesday's{attr('reset')} pay is: $",format(tuesday_pay,".2f"))
         with open(file_name, "a")as pay_file:
             writer = csv.writer(pay_file)
@@ -122,7 +145,7 @@ def tuesday(file_name):
             return tuesday_pay
         
     elif public_holiday in ["n", "N", "no" "No"] and shift_worked in ["afternoon", "Afternoon"]:
-        tuesday_pay = (base_rate * 1.15)  * hours_worked
+        tuesday_pay = arvo_shift_pay(base_rate, hours_worked)
         print(f"{fg('yellow')}Tuesday's{attr('reset')} pay is: $",format(tuesday_pay,".2f"))
         with open(file_name, "a")as pay_file:
             writer = csv.writer(pay_file)
@@ -130,7 +153,7 @@ def tuesday(file_name):
             return tuesday_pay
     
     elif public_holiday in ["n", "N", "no" "No"] and shift_worked in ["night", "Night"]:
-        tuesday_pay = (base_rate * 1.25)  * hours_worked
+        tuesday_pay = night_shift_pay(base_rate, hours_worked)
         print(f"{fg('yellow')}Tuesday's{attr('reset')} pay is: $",format(tuesday_pay,".2f"))
         with open(file_name, "a")as pay_file:
             writer = csv.writer(pay_file)
@@ -145,7 +168,7 @@ def wednesday(file_name):
     ph_penalties("Wednesday")
 
     if public_holiday in ["y", "Y", "yes", "Yes"]:
-        wednesday_pay = (base_rate * 2.5) * hours_worked
+        wednesday_pay = public_holiday_pay(base_rate, hours_worked)
         print(f"{fg('yellow')}Wednesday's{attr('reset')} pay is: $",format(wednesday_pay,".2f"))
         with open(file_name, "a")as pay_file:
             writer = csv.writer(pay_file)
@@ -153,7 +176,7 @@ def wednesday(file_name):
             return wednesday_pay
         
     elif public_holiday in ["n", "N", "no" "No"] and shift_worked in ["day", "Day"]:
-        wednesday_pay = base_rate  * hours_worked
+        wednesday_pay = day_shift_pay(base_rate, hours_worked)
         print(f"{fg('yellow')}Wednesday's{attr('reset')} pay is: $",format(wednesday_pay,".2f"))
         with open(file_name, "a")as pay_file:
             writer = csv.writer(pay_file)
@@ -161,7 +184,7 @@ def wednesday(file_name):
             return wednesday_pay
         
     elif public_holiday in ["n", "N", "no" "No"] and shift_worked in ["afternoon", "Afternoon"]:
-        wednesday_pay = (base_rate * 1.15)  * hours_worked
+        wednesday_pay = arvo_shift_pay(base_rate, hours_worked)
         print(f"{fg('yellow')}Wednesday's{attr('reset')} pay is: $",format(wednesday_pay,".2f"))
         with open(file_name, "a")as pay_file:
             writer = csv.writer(pay_file)
@@ -169,7 +192,7 @@ def wednesday(file_name):
             return wednesday_pay
     
     elif public_holiday in ["n", "N", "no" "No"] and shift_worked in ["night", "Night"]:
-        wednesday_pay = (base_rate * 1.25)  * hours_worked
+        wednesday_pay = night_shift_pay(base_rate, hours_worked)
         print(f"{fg('yellow')}Wednesday's{attr('reset')} pay is: $",format(wednesday_pay,".2f"))
         with open(file_name, "a")as pay_file:
             writer = csv.writer(pay_file)
@@ -184,7 +207,7 @@ def thursday(file_name):
     ph_penalties("Thursday")
 
     if public_holiday in ["y", "Y", "yes", "Yes"]:
-        thursday_pay = (base_rate * 2.5) * hours_worked
+        thursday_pay = public_holiday_pay(base_rate, hours_worked)
         print(f"{fg('yellow')}Thursday's{attr('reset')} pay is: $",format(thursday_pay,".2f"))
         with open(file_name, "a")as pay_file:
             writer = csv.writer(pay_file)
@@ -192,7 +215,7 @@ def thursday(file_name):
             return thursday_pay
         
     elif public_holiday in ["n", "N", "no" "No"] and shift_worked in ["day", "Day"]:
-        thursday_pay = base_rate  * hours_worked
+        thursday_pay = day_shift_pay(base_rate, hours_worked)
         print(f"{fg('yellow')}Thursday's{attr('reset')} pay is: $",format(thursday_pay,".2f"))
         with open(file_name, "a")as pay_file:
             writer = csv.writer(pay_file)
@@ -200,7 +223,7 @@ def thursday(file_name):
             return thursday_pay
         
     elif public_holiday in ["n", "N", "no" "No"] and shift_worked in ["afternoon", "Afternoon"]:
-        thursday_pay = (base_rate * 1.15)  * hours_worked
+        thursday_pay = arvo_shift_pay(base_rate, hours_worked)
         print(f"{fg('yellow')}Thursday's{attr('reset')} pay is: $",format(thursday_pay,".2f"))
         with open(file_name, "a")as pay_file:
             writer = csv.writer(pay_file)
@@ -208,7 +231,7 @@ def thursday(file_name):
             return thursday_pay
     
     elif public_holiday in ["n", "N", "no" "No"] and shift_worked in ["night", "Night"]:
-        thursday_pay = (base_rate * 1.25)  * hours_worked
+        thursday_pay = night_shift_pay(base_rate, hours_worked)
         print(f"{fg('yellow')}Thursday's{attr('reset')} pay is: $",format(thursday_pay,".2f"))
         with open(file_name, "a")as pay_file:
             writer = csv.writer(pay_file)
@@ -223,7 +246,7 @@ def friday(file_name):
     ph_penalties("Friday")
 
     if public_holiday in ["y", "Y", "yes", "Yes"]:
-        friday_pay = (base_rate * 2.5) * hours_worked
+        friday_pay = public_holiday_pay(base_rate, hours_worked)
         print(f"{fg('yellow')}Friday's{attr('reset')} pay is: $",format(friday_pay,".2f"))
         with open(file_name, "a")as pay_file:
             writer = csv.writer(pay_file)
@@ -231,7 +254,7 @@ def friday(file_name):
             return friday_pay
         
     elif public_holiday in ["n", "N", "no" "No"] and shift_worked in ["day", "Day"]:
-        friday_pay = base_rate  * hours_worked
+        friday_pay = day_shift_pay(base_rate, hours_worked)
         print(f"{fg('yellow')}Friday's{attr('reset')} pay is: $",format(friday_pay,".2f"))
         with open(file_name, "a")as pay_file:
             writer = csv.writer(pay_file)
@@ -239,7 +262,7 @@ def friday(file_name):
             return friday_pay
         
     elif public_holiday in ["n", "N", "no" "No"] and shift_worked in ["afternoon", "Afternoon"]:
-        friday_pay = (base_rate * 1.15)  * hours_worked
+        friday_pay = arvo_shift_pay(base_rate, hours_worked)
         print(f"{fg('yellow')}Friday's{attr('reset')} pay is: $",format(friday_pay,".2f"))
         with open(file_name, "a")as pay_file:
             writer = csv.writer(pay_file)
@@ -262,7 +285,7 @@ def saturday(file_name):
     ph_penalties("Saturday")
 
     if public_holiday in ["y", "Y", "yes", "Yes"]:
-        saturday_pay = (base_rate * 2.5) * hours_worked
+        saturday_pay = public_holiday_pay(base_rate, hours_worked)
         print(f"{fg('yellow')}Saturday's{attr('reset')} pay is: $",format(saturday_pay,".2f"))
         with open(file_name, "a")as pay_file:
             writer = csv.writer(pay_file)
@@ -270,7 +293,7 @@ def saturday(file_name):
             return saturday_pay
         
     elif public_holiday in ["n", "N", "no" "No"] and shift_worked in ["day", "Day"]:
-        saturday_pay = (base_rate * 1.5) * hours_worked
+        saturday_pay = sat_loading_pay(base_rate, hours_worked)
         print(f"{fg('yellow')}Saturday's{attr('reset')} pay is: $",format(saturday_pay,".2f"))
         with open(file_name, "a")as pay_file:
             writer = csv.writer(pay_file)
@@ -278,7 +301,7 @@ def saturday(file_name):
             return saturday_pay
         
     elif public_holiday in ["n", "N", "no" "No"] and shift_worked in ["afternoon", "Afternoon"]:
-        saturday_pay = (base_rate * 1.5)  * hours_worked
+        saturday_pay = sat_loading_pay(base_rate, hours_worked)
         print(f"{fg('yellow')}Saturday's{attr('reset')} pay is: $",format(saturday_pay,".2f"))
         with open(file_name, "a")as pay_file:
             writer = csv.writer(pay_file)
@@ -301,7 +324,7 @@ def sunday(file_name):
     ph_penalties("Sunday")
 
     if public_holiday in ["y", "Y", "yes", "Yes"]:
-        sunday_pay = (base_rate * 2.5) * hours_worked
+        sunday_pay = public_holiday_pay(base_rate, hours_worked)
         print(f"{fg('yellow')}Sunday's{attr('reset')} pay is: $",format(sunday_pay,".2f"))
         with open(file_name, "a")as pay_file:
             writer = csv.writer(pay_file)
@@ -309,7 +332,7 @@ def sunday(file_name):
             return sunday_pay
         
     elif public_holiday in ["n", "N", "no" "No"] and shift_worked in ["day", "Day"]:
-        sunday_pay = (base_rate * 1.8)  * hours_worked
+        sunday_pay = sun_loading_pay(base_rate, hours_worked)
         print(f"{fg('yellow')}Sunday's{attr('reset')} pay is: $",format(sunday_pay,".2f"))
         with open(file_name, "a")as pay_file:
             writer = csv.writer(pay_file)
@@ -317,7 +340,7 @@ def sunday(file_name):
             return sunday_pay
         
     elif public_holiday in ["n", "N", "no" "No"] and shift_worked in ["afternoon", "Afternoon"]:
-        sunday_pay = (base_rate * 1.8)  * hours_worked
+        sunday_pay = sun_loading_pay(base_rate, hours_worked)
         print(f"{fg('yellow')}Sunday's{attr('reset')} pay is: $",format(sunday_pay,".2f"))
         with open(file_name, "a")as pay_file:
             writer = csv.writer(pay_file)
