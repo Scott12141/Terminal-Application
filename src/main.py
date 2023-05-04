@@ -25,15 +25,6 @@ def start_menu():
     selection = input("Please enter your selection:  ")
     return selection
 
-# pay_week = {
-#     "Monday": monday_pay,
-#     "Tuesday": tuesday_pay,
-#     "Wednesday": wednesday_pay,
-#     "Thursday": thursday_pay,
-#     "Friday": friday_pay,
-#     "Saturday": saturday_pay,
-#     "Sunday": sunday_pay    
-# }
 
 user_selection = ""
 
@@ -51,7 +42,7 @@ while user_selection != "3":
     else:
         print(f"{fg('red')} Please enter a number 1-3.{attr('reset')}")
         continue
-    input(f"{fg('yellow')}Press enter {attr('reset')} to continue.....")
+    input(f"{fg('yellow')}Press enter {attr('reset')}to continue.....")
 
 
 
