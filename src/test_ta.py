@@ -3,6 +3,7 @@ from daily_functions import public_holiday_pay, day_shift_pay, night_shift_pay, 
 import csv
 from pay_functions import pay_week
 
+# Testing that each of the pay rate functions returns the right value
 def test_basic():
     assert "hello world" == "hello world"
 
@@ -21,9 +22,8 @@ def test_sat_pay():
 def test_sun_pay():
     assert sun_loading_pay(50, 10) == 900
 
-
+# Runs a check to see if the pay week function adds a new line to the csv.
 test_file_name = "test_pay_history.csv"
-
 
 def test_add(monkeypatch):
    original_length = 0

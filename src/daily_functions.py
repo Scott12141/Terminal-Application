@@ -2,7 +2,7 @@
 from colored import fg, attr
 import csv
 
-
+# Gets user input of thier base rate, runs try/except to make sure the value is a float and not negative.
 def user_base_rate():
     global base_rate
     base_rate = ''
@@ -15,9 +15,9 @@ def user_base_rate():
             break
         except ValueError:
             print(f"{fg('red')} '{input_rate}' is not a valid base rate of pay, please re-enter{attr('reset')}")
-
     return base_rate;
 
+# Gets user input of thier hours worked, runs try/except to make sure the value is a float and less than minimum hours.
 def user_hours_worked(day_of_week):
     global hours_worked
     hours_worked = ''
@@ -30,9 +30,9 @@ def user_hours_worked(day_of_week):
             break
         except ValueError:
             print(f"{fg('red')} '{input_hours}' is not a valid amount of hours worked, please re-enter{attr('reset')}")
-
     return hours_worked;
 
+# Gets user input of the shift they worked, runs if/else to make sure the input is a valid string.
 def user_shift_worked(day_of_week):
     global shift_worked
     shift_worked = ''
@@ -43,9 +43,9 @@ def user_shift_worked(day_of_week):
             break   
         else:
             print(f"{fg('red')} '{input_shift}' is not a valid shift worked, please re-enter{attr('reset')}")
-
     return shift_worked;
 
+# Gets user input to see if it was a public holiday, runs if/else to make sure the input is a valid string.
 def ph_penalties(day_of_week):
     global public_holiday
     public_holiday = ''
@@ -56,33 +56,35 @@ def ph_penalties(day_of_week):
             break   
         else:
             print(f"{fg('red')} '{input_ph}' is not a valid responce, please enter y or n{attr('reset')}")
-
     return public_holiday;
 
+# Calculates Public Holiday loading rate of pay 
 def public_holiday_pay(base_rate, hours_worked):
     ph_pay = (base_rate * 2.5) * hours_worked
     return ph_pay
-
+# Calculates Day shift rate of pay 
 def day_shift_pay(base_rate, hours_worked):
     ds_pay = base_rate  * hours_worked
     return ds_pay
-
+# Calculates Afternoon shift loading rate of pay 
 def arvo_shift_pay(base_rate, hours_worked):
     as_pay = (base_rate * 1.15)  * hours_worked
     return as_pay
-
+# Calculates Night shift loading rate of pay 
 def night_shift_pay(base_rate, hours_worked):
     ns_pay = (base_rate * 1.25)  * hours_worked
     return ns_pay
-
+# Calculates Saturday loading rate of pay 
 def sat_loading_pay(base_rate, hours_worked):
     satl_pay = (base_rate * 1.5) * hours_worked
     return satl_pay
-
+# Calculates Sunday loading rate of pay 
 def sun_loading_pay(base_rate, hours_worked):
     sunl_pay = (base_rate * 1.8) * hours_worked
     return sunl_pay
 
+# Creates a function to calculate how much pay the user gets on any given day thats entered based on:
+# which shift they worked, then writes it to the csv
 # MONDAY
 def monday(file_name):
     user_shift_worked("Monday")
