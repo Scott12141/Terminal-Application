@@ -16,7 +16,7 @@ def pay_calculator(file_name):
     # Runs a while loop getting each day worked and ending if the user inputs that theyre finished.
     while pay_day != "finished" or "Finished":
         # Depending on which day the user enters it will call that day of the weeks function and then add the returned value to the weekly accumulation.
-        pay_day = input(f"Please enter a {fg('yellow')}day{attr('reset')} you've worked, or {fg('yellow')}'finished'{attr('reset')} when your pay weeks complete : ")
+        pay_day = input(f"Please enter a {fg('yellow')}day{attr('reset')} you've worked, or {fg('yellow')}'finished'{attr('reset')} when your pay weeks complete: ")
 
         # Monday
         if pay_day in ["monday", "Monday", "mon", "Mon"]:
