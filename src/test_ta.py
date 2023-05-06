@@ -4,8 +4,6 @@ import csv
 from pay_functions import pay_week
 
 # Testing that each of the pay rate functions returns the right value
-def test_basic():
-    assert "hello world" == "hello world"
 
 def test_ph_pay():
     assert public_holiday_pay(50, 10) == 1250
